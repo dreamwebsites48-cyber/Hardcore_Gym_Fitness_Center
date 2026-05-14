@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hardcore Gym & Fitness Center - Premium Fitness Solutions</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0a0e27;
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ========== LOADER ========== */
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #0a0e27;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .spinner {
+      width: 80px;
+      height: 80px;
+      border: 6px solid rgba(255, 0, 0, 0.1);
+      border-top: 6px solid #ff0000;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ========== NAVBAR ========== */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(15px);
+      background: rgba(0, 0, 0, 0.7);
+      border-bottom: 2px solid #ff0000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: #ff0000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      font-size: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a:before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #ff0000;
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover:before {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #ff0000;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #ff0000;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(255, 0, 0, 0.2)),
+                  url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2000&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      top: 20%;
+      left: 10%;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content h1 {
+      font-size: 72px;
+      margin-bottom: 20px;
+      font-weight: 900;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .typing {
+      color: #ff0000;
+      text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+
+    .hero-content p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 20px;
+      color: #ddd;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 40px;
+      background: linear-gradient(45deg, #ff0000, #cc0000);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.4s;
+      font-size: 16px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+    }
+
+    .btn2 {
+      background: transparent;
+      border: 2px solid #ff0000;
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 100px 8%;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 48px;
+      margin-bottom: 60px;
+      font-weight: 900;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    }
+
+    /* ========== ABOUT SECTION ========== */
+    .about {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(0, 0, 0, 0.3));
+    }
+
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-card {
+      background: rgba(255, 0, 0, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 0, 0, 0.2);
+    }
+
+    .about-card h3 {
+      color: #ff0000;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .about-card p {
+      line-height: 1.8;
+      color: #ddd;
+      margin-bottom: 15px;
+    }
+
+    .counter-box {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .counter-card {
+      background: rgba(255, 0, 0, 0.1);
+      padding: 35px;
+      border-radius: 15px;
+      text-align: center;
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      transition: all 0.3s;
+    }
+
+    .counter-card:hover {
+      background: rgba(255, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .counter-card h2 {
+      color: #ff0000;
+      font-size: 50px;
+      font-weight: 900;
+      text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    }
+
+    .counter-card p {
+      margin-top: 10px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* ========== FEATURES SECTION ========== */
+    .features {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: rgba(255, 0, 0, 0.08);
+      padding: 40px;
+      border-radius: 20px;
+      transition: all 0.4s;
+      border: 1px solid rgba(255, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-15px);
+      background: rgba(255, 0, 0, 0.15);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+    }
+
+    .feature-icon {
+      font-size: 50px;
+      color: #ff0000;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    }
+
+    .feature-card h3 {
+      color: #ff0000;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .feature-card p {
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    /* ========== MEMBERSHIP PLANS ========== */
+    .memberships {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(0, 0, 0, 0.3));
+    }
+
+    .membership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .membership-card {
+      background: rgba(255, 0, 0, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 0, 0, 0.2);
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .membership-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #ff0000, transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.4s;
+    }
+
+    .membership-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .membership-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 0, 0, 0.15);
+      border-color: #ff0000;
+    }
+
+    .membership-badge {
+      display: inline-block;
+      background: #ff0000;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .membership-card h3 {
+      color: #ff0000;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 40px;
+      color: #ff0000;
+      font-weight: 900;
+      margin: 20px 0;
+    }
+
+    .price-duration {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .membership-features {
+      list-style: none;
+      margin: 30px 0;
+    }
+
+    .membership-features li {
+      padding: 12px 0;
+      color: #ddd;
+      border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .membership-features li:before {
+      content: '✓';
+      color: #ff0000;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    /* ========== TRAINERS SECTION ========== */
+    .trainers {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .trainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .trainer-card {
+      background: rgba(255, 0, 0, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      transition: all 0.4s;
+    }
+
+    .trainer-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+    }
+
+    .trainer-image {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+    }
+
+    .trainer-info {
+      padding: 30px;
+    }
+
+    .trainer-info h3 {
+      color: #ff0000;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .trainer-specialty {
+      color: #aaa;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .trainer-details {
+      color: #ddd;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .trainer-contact {
+      color: #ff0000;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .trainer-contact:hover {
+      color: #ff6666;
+    }
+
+    /* ========== SERVICES SECTION ========== */
+    .services {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(0, 0, 0, 0.3));
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: rgba(255, 0, 0, 0.08);
+      padding: 40px;
+      border-radius: 20px;
+      transition: all 0.4s;
+      border: 1px solid rgba(255, 0, 0, 0.1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 0, 0, 0.15);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+    }
+
+    .service-icon {
+      font-size: 45px;
+      color: #ff0000;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      color: #ff0000;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    /* ========== CLASSES SECTION ========== */
+    .classes {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .class-card {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      transition: all 0.3s;
+    }
+
+    .class-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.25);
+    }
+
+    .class-tag {
+      display: inline-block;
+      background: #ff0000;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .class-card h3 {
+      color: #ff0000;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .class-time {
+      color: #aaa;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(0, 0, 0, 0.3));
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 0, 0, 0.08);
+      padding: 35px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 0, 0, 0.1);
+      transition: all 0.3s;
+    }
+
+    .testimonial-card:hover {
+      background: rgba(255, 0, 0, 0.12);
+      transform: translateY(-5px);
+    }
+
+    .stars {
+      color: #ff0000;
+      font-size: 16px;
+      margin-bottom: 15px;
+      letter-spacing: 3px;
+    }
+
+    .testimonial-text {
+      color: #ddd;
+      font-style: italic;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .author-name {
+      color: #ff0000;
+      font-weight: 700;
+    }
+
+    .author-role {
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    /* ========== GALLERY ========== */
+    .gallery {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-box {
+      height: 280px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      background-size: cover;
+      background-position: center;
+      transition: all 0.4s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .gallery-box:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* ========== CONTACT SECTION ========== */
+    .contact {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(0, 0, 0, 0.3));
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      font-size: 28px;
+      color: #ff0000;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 0, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-details h4 {
+      color: #ff0000;
+      margin-bottom: 8px;
+    }
+
+    .contact-details p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .contact-form {
+      width: 100%;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #ff0000;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      background: rgba(255, 0, 0, 0.08);
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      border-radius: 10px;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #ff0000;
+      background: rgba(255, 0, 0, 0.12);
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      background: #000;
+      border-top: 2px solid #ff0000;
+    }
+
+    footer h2 {
+      color: #ff0000;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    footer p {
+      color: #aaa;
+      margin: 5px 0;
+    }
+
+    /* ========== TOP BUTTON ========== */
+    #topBtn {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      width: 60px;
+      height: 60px;
+      border: 2px solid #ff0000;
+      border-radius: 50%;
+      background: rgba(255, 0, 0, 0.9);
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      display: none;
+      transition: all 0.3s;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+      z-index: 999;
+    }
+
+    #topBtn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero-content h1 {
+        font-size: 50px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        right: -100%;
+        width: 250px;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 30px;
+        gap: 20px;
+        border: 1px solid rgba(255, 0, 0, 0.3);
+        transition: right 0.4s;
+        border-radius: 15px;
+      }
+
+      .nav-links.active {
+        right: 20px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .about-container {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 4%;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+    }
+
+    /* ========== SCROLL ANIMATION ========== */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="spinner"></div>
+</div>
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-dumbbell"></i>
+      Hardcore Gym
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#memberships">Memberships</a></li>
+      <li><a href="#trainers">Trainers</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#classes">Classes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Push Your <span class="typing"></span></h1>
+    <p>
+      No Excuses. No Limits. Just Pure Hardcore Training & Fitness Excellence
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#memberships" class="btn">Join Now</a>
+      <a href="#contact" class="btn btn2">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about" id="about">
+  <h2 class="section-title">About Hardcore Gym</h2>
+
+  <div class="about-container">
+    <div class="about-card scroll-reveal">
+      <h3>💪 Who We Are</h3>
+      <p>
+        Hardcore Gym & Fitness Center is India's leading premium fitness destination. Established in 2010, we have transformed over 25,000 lives through dedicated training and world-class facilities.
+      </p>
+      <p>
+        Our mission is to provide a motivating environment where fitness enthusiasts of all levels can achieve their goals with support from expert trainers and the latest equipment.
+      </p>
+    </div>
+
+    <div class="counter-box">
+      <div class="counter-card scroll-reveal">
+        <h2 class="counter" data-target="25000">0</h2>
+        <p>Members Trained</p>
+      </div>
+
+      <div class="counter-card scroll-reveal">
+        <h2 class="counter" data-target="50">0</h2>
+        <p>Expert Trainers</p>
+      </div>
+
+      <div class="counter-card scroll-reveal">
+        <h2 class="counter" data-target="100">0</h2>
+        <p>Equipment Pieces</p>
+      </div>
+
+      <div class="counter-card scroll-reveal">
+        <h2 class="counter" data-target="14">0</h2>
+        <p>Years Experience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features" id="features">
+  <h2 class="section-title">Why Choose Hardcore Gym?</h2>
+
+  <div class="feature-grid">
+    <div class="feature-card scroll-reveal">
+      <div class="feature-icon">
+        <i class="fas fa-dumbbell"></i>
+      </div>
+      <h3>Premium Equipment</h3>
+      <p>Latest gym equipment from world-renowned brands with regular maintenance and upgrades.</p>
+    </div>
+
+    <div class="feature-card scroll-reveal">
+      <div class="feature-icon">
+        <i class="fas fa-user-tie"></i>
+      </div>
+      <h3>Expert Trainers</h3>
+      <p>Certified fitness professionals with 10+ years experience in body transformation.</p>
+    </div>
+
+    <div class="feature-card scroll-reveal">
+      <div class="feature-icon">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <h3>Proven Results</h3>
+      <p>Documented transformations with personalized training and nutrition plans.</p>
+    </div>
+
+    <div class="feature-card scroll-reveal">
+      <div class="feature-icon">
+        <i class="fas fa-spa"></i>
+      </div>
+      <h3>Recovery Center</h3>
+      <p>Sauna, steam room, massage therapy, and stretching zones for recovery.</p>
+    </div>
+
+    <div class="feature-card scroll-reveal">
+      <div class="feature-icon">
+        <i class="fas fa-utensils"></i>
+      </div>
+      <h3>Nutrition Counseling</h3>
+      <p>Professional diet planning and nutritional guidance from certified dieticians.</p>
+    </div>
+
+    <div class="feature-card scroll-reveal">
+      <div class="feature-icon">
+        <i class="fas fa-community"></i>
+      </div>
+      <h3>Community Support</h3>
+      <p>Motivating fitness community with regular challenges and events.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP PLANS -->
+<section class="memberships" id="memberships">
+  <h2 class="section-title">Membership Plans</h2>
+
+  <div class="membership-grid">
+    <div class="membership-card scroll-reveal">
+      <span class="membership-badge">STARTER</span>
+      <h3>Silver</h3>
+      <p>Perfect for beginners</p>
+      <div class="price">₹2,999<span class="price-duration">/month</span></div>
+      <ul class="membership-features">
+        <li>Unlimited Gym Access</li>
+        <li>Basic Equipment Access</li>
+        <li>Locker Facility</li>
+        <li>WiFi Access</li>
+        <li>Member Discount on Services</li>
+        <li>Monthly Fitness Test</li>
+      </ul>
+      <button class="btn" onclick="alert('Silver membership selected!')">Select Plan</button>
+    </div>
+
+    <div class="membership-card scroll-reveal">
+      <span class="membership-badge">POPULAR</span>
+      <h3>Gold</h3>
+      <p>Best value for money</p>
+      <div class="price">₹4,999<span class="price-duration">/month</span></div>
+      <ul class="membership-features">
+        <li>Unlimited Gym Access</li>
+        <li>All Equipment Access</li>
+        <li>Premium Locker</li>
+        <li>WiFi + Charging Stations</li>
+        <li>Personal Training Sessions (4/month)</li>
+        <li>Nutrition Consultation</li>
+        <li>Recovery Center Access</li>
+        <li>Monthly Body Composition Analysis</li>
+      </ul>
+      <button class="btn" onclick="alert('Gold membership selected!')">Select Plan</button>
+    </div>
+
+    <div class="membership-card scroll-reveal">
+      <span class="membership-badge">PREMIUM</span>
+      <h3>Platinum</h3>
+      <p>Elite fitness experience</p>
+      <div class="price">₹7,999<span class="price-duration">/month</span></div>
+      <ul class="membership-features">
+        <li>Unlimited Gym + Classes Access</li>
+        <li>VIP Equipment Zone Access</li>
+        <li>Premium Private Locker</li>
+        <li>Personal Trainer (Unlimited)</li>
+        <li>Nutrition Planning & Coaching</li>
+        <li>Complete Recovery Services</li>
+        <li>Priority Class Booking</li>
+        <li>Monthly Body Transformation Report</li>
+        <li>Guest Passes (4/month)</li>
+        <li>VIP Event Access</li>
+      </ul>
+      <button class="btn" onclick="alert('Platinum membership selected!')">Select Plan</button>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS SECTION -->
+<section class="trainers" id="trainers">
+  <h2 class="section-title">Expert Trainers</h2>
+
+  <div class="trainer-grid">
+    <div class="trainer-card scroll-reveal">
+      <div class="trainer-image">🏋️‍♂️</div>
+      <div class="trainer-info">
+        <h3>Rajesh Kumar</h3>
+        <div class="trainer-specialty">Body Building Specialist</div>
+        <div class="trainer-details">
+          <strong>NASM Certified</strong><br>
+          15+ Years Experience<br>
+          100+ Transformations
+        </div>
+        <a href="#contact" class="trainer-contact">Book Session</a>
+      </div>
+    </div>
+
+    <div class="trainer-card scroll-reveal">
+      <div class="trainer-image">💪</div>
+      <div class="trainer-info">
+        <h3>Priya Sharma</h3>
+        <div class="trainer-specialty">Weight Loss Expert</div>
+        <div class="trainer-details">
+          <strong>ACE Certified</strong><br>
+          12+ Years Experience<br>
+          500+ Weight Loss Cases
+        </div>
+        <a href="#contact" class="trainer-contact">Book Session</a>
+      </div>
+    </div>
+
+    <div class="trainer-card scroll-reveal">
+      <div class="trainer-image">🥊</div>
+      <div class="trainer-info">
+        <h3>Vikram Singh</h3>
+        <div class="trainer-specialty">Boxing & Combat Training</div>
+        <div class="trainer-details">
+          <strong>International Boxing Coach</strong><br>
+          18+ Years Experience<br>
+          Multiple Fighters Trained
+        </div>
+        <a href="#contact" class="trainer-contact">Book Session</a>
+      </div>
+    </div>
+
+    <div class="trainer-card scroll-reveal">
+      <div class="trainer-image">🤸‍♀️</div>
+      <div class="trainer-info">
+        <h3>Anjali Patel</h3>
+        <div class="trainer-specialty">Yoga & Flexibility Coach</div>
+        <div class="trainer-details">
+          <strong>E-RYT 500 Certified</strong><br>
+          10+ Years Experience<br>
+          Specializes in Flexibility
+        </div>
+        <a href="#contact" class="trainer-contact">Book Session</a>
+      </div>
+    </div>
+
+    <div class="trainer-card scroll-reveal">
+      <div class="trainer-image">🏃‍♂️</div>
+      <div class="trainer-info">
+        <h3>Amit Verma</h3>
+        <div class="trainer-specialty">Cardio & Endurance Coach</div>
+        <div class="trainer-details">
+          <strong>ISSA Certified</strong><br>
+          13+ Years Experience<br>
+          Marathon Training Expert
+        </div>
+        <a href="#contact" class="trainer-contact">Book Session</a>
+      </div>
+    </div>
+
+    <div class="trainer-card scroll-reveal">
+      <div class="trainer-image">🧘</div>
+      <div class="trainer-info">
+        <h3>Neha Dubey</h3>
+        <div class="trainer-specialty">Nutrition & Wellness Coach</div>
+        <div class="trainer-details">
+          <strong>Certified Nutritionist</strong><br>
+          11+ Years Experience<br>
+          Holistic Health Approach
+        </div>
+        <a href="#contact" class="trainer-contact">Book Session</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section class="services" id="services">
+  <h2 class="section-title">Services & Facilities</h2>
+
+  <div class="service-grid">
+    <div class="service-card scroll-reveal">
+      <div class="service-icon">
+        <i class="fas fa-dumbbell"></i>
+      </div>
+      <h3>Strength Training</h3>
+      <p>Heavy weight lifting with professional guidance and custom programming for muscle building.</p>
+    </div>
+
+    <div class="service-card scroll-reveal">
+      <div class="service-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+      <h3>Cardio Programs</h3>
+      <p>State-of-the-art cardio equipment with structured programs for endurance and weight loss.</p>
+    </div>
+
+    <div class="service-card scroll-reveal">
+      <div class="service-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <h3>Group Classes</h3>
+      <p>High-energy group fitness classes including Zumba, Aerobics, CrossFit, and more.</p>
+    </div>
+
+    <div class="service-card scroll-reveal">
+      <div class="service-icon">
+        <i class="fas fa-spa"></i>
+      </div>
+      <h3>Recovery Services</h3>
+      <p>Sauna, steam room, massage therapy, and cold water immersion for post-workout recovery.</p>
+    </div>
+
+    <div class="service-card scroll-reveal">
+      <div class="service-icon">
+        <i class="fas fa-apple-alt"></i>
+      </div>
+      <h3>Nutrition Plans</h3>
+      <p>Personalized meal plans designed by certified nutritionists for your specific goals.</p>
+    </div>
+
+    <div class="service-card scroll-reveal">
+      <div class="service-icon">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <h3>Body Composition Analysis</h3>
+      <p>Regular body scans and progress tracking with detailed transformation reports.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSES SECTION -->
+<section class="classes" id="classes">
+  <h2 class="section-title">Group Classes Schedule</h2>
+
+  <div class="class-grid">
+    <div class="class-card scroll-reveal">
+      <span class="class-tag">CARDIO</span>
+      <h3>Zumba Dance Fitness</h3>
+      <p>High-energy dance class that burns 500+ calories per session while having fun.</p>
+      <div class="class-time">⏰ Mon, Wed, Fri - 6:00 PM</div>
+      <button class="btn" style="width: 100%;">Enroll Now</button>
+    </div>
+
+    <div class="class-card scroll-reveal">
+      <span class="class-tag">STRENGTH</span>
+      <h3>CrossFit Training</h3>
+      <p>Intense functional fitness training combining weightlifting, gymnastics, and conditioning.</p>
+      <div class="class-time">⏰ Tue, Thu - 7:00 PM</div>
+      <button class="btn" style="width: 100%;">Enroll Now</button>
+    </div>
+
+    <div class="class-card scroll-reveal">
+      <span class="class-tag">FLEXIBILITY</span>
+      <h3>Yoga & Meditation</h3>
+      <p>Improve flexibility, balance, and mental wellness with guided yoga sessions.</p>
+      <div class="class-time">⏰ Daily - 7:00 AM & 5:00 PM</div>
+      <button class="btn" style="width: 100%;">Enroll Now</button>
+    </div>
+
+    <div class="class-card scroll-reveal">
+      <span class="class-tag">BOXING</span>
+      <h3>Boxing & Kickboxing</h3>
+      <p>Learn professional boxing techniques and improve hand-eye coordination and confidence.</p>
+      <div class="class-time">⏰ Sat, Sun - 6:00 PM</div>
+      <button class="btn" style="width: 100%;">Enroll Now</button>
+    </div>
+
+    <div class="class-card scroll-reveal">
+      <span class="class-tag">CORE</span>
+      <h3>Core & Abs Blast</h3>
+      <p>Focused training for core strength and visible six-pack abs with guaranteed results.</p>
+      <div class="class-time">⏰ Mon, Wed - 5:30 PM</div>
+      <button class="btn" style="width: 100%;">Enroll Now</button>
+    </div>
+
+    <div class="class-card scroll-reveal">
+      <span class="class-tag">MIXED</span>
+      <h3>Bootcamp Training</h3>
+      <p>Military-style training combining cardio, strength, and agility for total body transformation.</p>
+      <div class="class-time">⏰ Thu, Sat - 6:30 PM</div>
+      <button class="btn" style="width: 100%;">Enroll Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2 class="section-title">Member Success Stories</h2>
+
+  <div class="testimonial-grid">
+    <div class="testimonial-card scroll-reveal">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text">
+        "Hardcore Gym completely transformed my life! In 6 months, I lost 20kg and gained muscle. The trainers are incredibly professional and motivating. Best investment ever!"
+      </p>
+      <div class="author-name">Rohit Sharma</div>
+      <div class="author-role">Weight Loss Journey - 20kg Lost</div>
+    </div>
+
+    <div class="testimonial-card scroll-reveal">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text">
+        "I came in weighing 95kg with zero confidence. Now I'm 72kg with visible abs and unshakeable confidence. The personalized training and nutrition plan was exactly what I needed!"
+      </p>
+      <div class="author-name">Priya Verma</div>
+      <div class="author-role">Body Transformation - 23kg Lost</div>
+    </div>
+
+    <div class="testimonial-card scroll-reveal">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text">
+        "As someone who never exercised before, I was intimidated. But the team made me feel welcome and created a perfect beginner program. Now I'm stronger than ever!"
+      </p>
+      <div class="author-name">Aman Gupta</div>
+      <div class="author-role">Fitness Beginner - 15kg Muscle Gain</div>
+    </div>
+
+    <div class="testimonial-card scroll-reveal">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text">
+        "The boxing training with Vikram sir is phenomenal! I've built serious strength and confidence. The recovery facilities here are world-class. Highly recommended for everyone!"
+      </p>
+      <div class="author-name">Karan Singh</div>
+      <div class="author-role">Boxing Training - Professional Level</div>
+    </div>
+
+    <div class="testimonial-card scroll-reveal">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text">
+        "The yoga and wellness programs helped me recover from injuries and improve flexibility. Combined with strength training, I feel healthier and younger than ever before!"
+      </p>
+      <div class="author-name">Anjali Tripathi</div>
+      <div class="author-role">Holistic Wellness Journey</div>
+    </div>
+
+    <div class="testimonial-card scroll-reveal">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text">
+        "Best gym with the best trainers. The atmosphere is motivating, equipment is top-notch, and the nutritional guidance is spot-on. Worth every rupee spent. 5 stars guaranteed!"
+      </p>
+      <div class="author-name">Deepak Verma</div>
+      <div class="author-role">6 Years Member</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <h2 class="section-title">Gym Gallery</h2>
+
+  <div class="gallery-grid">
+    <div class="gallery-box scroll-reveal" style="background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(200, 0, 0, 0.8));">
+      <div class="gallery-overlay">
+        <i class="fas fa-images" style="font-size: 40px;"></i>
+      </div>
+    </div>
+
+    <div class="gallery-box scroll-reveal" style="background: linear-gradient(135deg, rgba(200, 0, 0, 0.8), rgba(255, 0, 0, 0.8));">
+      <div class="gallery-overlay">
+        <i class="fas fa-images" style="font-size: 40px;"></i>
+      </div>
+    </div>
+
+    <div class="gallery-box scroll-reveal" style="background: linear-gradient(135deg, rgba(255, 50, 50, 0.8), rgba(200, 0, 0, 0.8));">
+      <div class="gallery-overlay">
+        <i class="fas fa-images" style="font-size: 40px;"></i>
+      </div>
+    </div>
+
+    <div class="gallery-box scroll-reveal" style="background: linear-gradient(135deg, rgba(220, 20, 20, 0.8), rgba(180, 0, 0, 0.8));">
+      <div class="gallery-overlay">
+        <i class="fas fa-images" style="font-size: 40px;"></i>
+      </div>
+    </div>
+
+    <div class="gallery-box scroll-reveal" style="background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(100, 0, 0, 0.8));">
+      <div class="gallery-overlay">
+        <i class="fas fa-images" style="font-size: 40px;"></i>
+      </div>
+    </div>
+
+    <div class="gallery-box scroll-reveal" style="background: linear-gradient(135deg, rgba(180, 0, 0, 0.8), rgba(255, 0, 0, 0.8));">
+      <div class="gallery-overlay">
+        <i class="fas fa-images" style="font-size: 40px;"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact" id="contact">
+  <h2 class="section-title">Get In Touch</h2>
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="contact-details">
+          <h4>Location</h4>
+          <p>Hardcore Gym & Fitness Center<br>123 Fitness Street<br>New Delhi - 110001<br>India</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-phone-alt"></i>
+        </div>
+        <div class="contact-details">
+          <h4>Phone Numbers</h4>
+          <p><strong>Main:</strong> +91-9876-543-210<br><strong>Support:</strong> +91-9876-123-456<br><strong>Toll Free:</strong> 1-800-GYM-HARD</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="contact-details">
+          <h4>Email</h4>
+          <p>info@hardcoregym.com<br>membership@hardcoregym.com<br>support@hardcoregym.com</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="contact-details">
+          <h4>Hours</h4>
+          <p>Mon-Fri: 6:00 AM - 11:00 PM<br>Sat-Sun: 6:00 AM - 10:00 PM<br>Holidays: 7:00 AM - 9:00 PM</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="submitForm(event)">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your Name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="Your Email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="Your Phone" required>
+      </div>
+
+      <div class="form-group">
+        <label>Interested In</label>
+        <select style="padding: 15px; background: rgba(255, 0, 0, 0.08); border: 1px solid rgba(255, 0, 0, 0.2); border-radius: 10px; color: white; font-family: 'Poppins', sans-serif;">
+          <option style="color: #000;">Membership Inquiry</option>
+          <option style="color: #000;">Personal Training</option>
+          <option style="color: #000;">Group Classes</option>
+          <option style="color: #000;">General Inquiry</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Your Message" required></textarea>
+      </div>
+
+      <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h2>💪 Hardcore Gym & Fitness Center</h2>
+  <p>No Excuses. No Limits. Just Hardcore Fitness.</p>
+  <p>© 2024 All Rights Reserved | Privacy Policy | Terms & Conditions</p>
+  <p>Follow us on: Facebook | Instagram | YouTube | Twitter</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="topBtn">↑</button>
+
+<script>
+  // LOADER
+  window.addEventListener("load", () => {
+    document.getElementById("loader").style.display = "none";
+  });
+
+  // MOBILE MENU
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.onclick = () => {
+    navLinks.classList.toggle("active");
+  };
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove("active");
+    });
+  });
+
+  // TYPING EFFECT
+  const typing = document.querySelector(".typing");
+
+  const words = [
+    "Limits",
+    "Goals",
+    "Potential",
+    "Fitness",
+    "Strength"
+  ];
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let currentWord = "";
+  let isDeleting = false;
+
+  function typeEffect() {
+    currentWord = words[wordIndex];
+
+    if (isDeleting) {
+      typing.textContent = currentWord.substring(0, charIndex--);
+    } else {
+      typing.textContent = currentWord.substring(0, charIndex++);
+    }
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1000);
+      return;
+    }
+
+    if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+    }
+
+    setTimeout(typeEffect, isDeleting ? 60 : 120);
+  }
+
+  typeEffect();
+
+  // COUNTER
+  const counters = document.querySelectorAll(".counter");
+
+  counters.forEach(counter => {
+    counter.innerText = '0';
+
+    const updateCounter = () => {
+      const target = +counter.getAttribute('data-target');
+      const c = +counter.innerText;
+      const increment = target / 100;
+
+      if (c < target) {
+        counter.innerText = `${Math.ceil(c + increment)}`;
+        setTimeout(updateCounter, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+
+    updateCounter();
+  });
+
+  // TOP BUTTON
+  const topBtn = document.getElementById("topBtn");
+
+  window.onscroll = () => {
+    if (document.documentElement.scrollTop > 300) {
+      topBtn.style.display = "block";
+    } else {
+      topBtn.style.display = "none";
+    }
+  };
+
+  topBtn.onclick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  // SCROLL REVEAL
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => {
+    observer.observe(el);
+  });
+
+  // FORM SUBMISSION
+  function submitForm(event) {
+    event.preventDefault();
+    alert('Thank you for contacting us! We will get back to you soon.');
+    event.target.reset();
+  }
+
+  // SMOOTH SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
